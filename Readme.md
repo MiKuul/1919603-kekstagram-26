@@ -1,7 +1,7 @@
 # Личный проект «Кекстаграм»
 
 * Студент: [Михаил Кулешов](https://up.htmlacademy.ru/javascript/26/user/1919603).
-* Наставник: `Неизвестно`.
+* Наставник: [Дмитрий Рябинин](https://htmlacademy.ru/profile/haschish).
 
 ---
 
