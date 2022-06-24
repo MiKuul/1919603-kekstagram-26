@@ -44,61 +44,41 @@ obj = {
   }],
 };
 */
-const DATA_ID = [];
-const DATA_ADRESS = [];
-const DATA_DESCRIPTION = [];
-const DATA_LIKES = [];
-const SIMILAR_PHOTO_DESCRIPTION = 25;
-
-
-// фунция генерации массива id
-function getId (a, b) {
-  for (let i = a; i <= b; i++) {
-    DATA_ID[i] = i;
-  }
-  return DATA_ID;
-}
-// фунция генерации массива url-ссылки
-function getAdress (a, b) {
-  for (let i = a; i <= b; i++) {
-    DATA_ADRESS[i] = `photos/${i}.jpg`;
-  }
-  return DATA_ADRESS;
-}
-// фунция генерации массива описаний
-function getDescription (a, b) {
-  for (let i = a; i <= b; i++) {
-    DATA_DESCRIPTION[i] = `Описание-${i}`;
-  }
-  return DATA_DESCRIPTION;
-}
-// фунция генерации массива лайков
-function getLikes (a, b) {
-  for (let i = a; i <= b; i++) {
-    DATA_LIKES[i] = i;
-  }
-  return DATA_LIKES;
-}
-
-getDescription (1, 25);
-getId (1, 25);
-getAdress (1, 25);
-getLikes (15, 200);
-
-
-console.log(DATA_LIKES);
-console.log(DATA_ID);
-console.log(DATA_ADRESS);
-console.log(DATA_DESCRIPTION);
-
+const DATA_NAME = [ 'Артем', 'Даня', 'Лиза', 'Герман', 'Моника', 'Дина'];
+const DATA_MESSAGE = ['Всё отлично!', 'Как можно было поймать такой неудачный момент?!', ' В целом всё неплохо. Но не всё.', 'Лица у людей на фотке перекошены, как будто их избивают.'];
 const getRandomArrayElement = (elements) => elements[getRandomPositiveInteger(0, elements.length - 1)];
 
-const createPhotoDescription = () => ({
-  id: getRandomArrayElement(DATA_ID),
-  url: getRandomArrayElement(DATA_ADRESS),
-  description: getRandomArrayElement(DATA_DESCRIPTION),
-  likes: getRandomArrayElement(DATA_LIKES),
-});
+function generatePhoto(number) {
+  const arr = [];
+  for (let i = 0; i < number; i++) {
+    arr.push({
+      id: i + 1,
+      url: `photos/${i + 1}.jpg`,
+      description: `Описание${i + 1}`,
+      likes: getRandomPositiveInteger (15, 200),
+      comments: generate(6, generateComment),
+    });
+  }
+  return arr;
+}
 
-const similarPhotoDescription = Array.from({length: SIMILAR_PHOTO_DESCRIPTION}, createPhotoDescription);
-console.log(similarPhotoDescription);
+function generateComment(number) {
+  const arr = [];
+  for (let i = 0; i < number; i++) {
+    arr.push({
+      id: i + 1,
+      avatar: `img/avatar-${getRandomPositiveInteger(1, 6)}.svg`,
+      message: getRandomArrayElement(DATA_MESSAGE),
+      name: getRandomArrayElement(DATA_NAME),
+    });
+  }
+  return arr;
+}
+
+function generate(number, creator) {
+  return Array.from({length: number}, creator);
+}
+
+generate(25, generatePhoto);
+
+console.log(generatePhoto(25));
