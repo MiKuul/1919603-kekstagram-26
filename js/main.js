@@ -56,7 +56,7 @@ function generatePhoto(number) {
       url: `photos/${i + 1}.jpg`,
       description: `Описание${i + 1}`,
       likes: getRandomPositiveInteger (15, 200),
-      comments: generate(6, generateComment),
+      comments: generateComment(6),
     });
   }
   return arr;
@@ -75,10 +75,11 @@ function generateComment(number) {
   return arr;
 }
 
-function generate(number, creator) {
-  return Array.from({length: number}, creator);
-}
+generatePhoto();
 
-generate(25, generatePhoto);
+// почему не срабатывает функция? появляется просто массив из 25 пустых элементов...
+// function generate(number, creator) {
+//   return Array.from({length: number}, creator);
+// }
 
-console.log(generatePhoto(25));
+// console.log(generatePhoto(25));
