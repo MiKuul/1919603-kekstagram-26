@@ -1,6 +1,6 @@
 import './util.js';
 import {generatePhoto} from './data.js';
 
-const data = generatePhoto();
+generatePhoto();
 
-console.log(generatePhoto(25));
+// console.log(generatePhoto(25));
