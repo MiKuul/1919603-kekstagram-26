@@ -1,5 +1,5 @@
 import './util.js';
-import {generatePhoto} from './data';
+import {generatePhoto} from './data.js';
 
 generatePhoto();
 

@@ -1,5 +1,4 @@
-import {getRandomPositiveInteger} from './util.js';
-import {getRandomArrayElement} from './util.js';
+import {getRandomPositiveInteger, getRandomArrayElement} from './util.js';
 
 const DATA_NAME = [ 'Артем', 'Даня', 'Лиза', 'Герман', 'Моника', 'Дина'];
 const DATA_MESSAGE = ['Всё отлично!', 'Как можно было поймать такой неудачный момент?!', ' В целом всё неплохо. Но не всё.', 'Лица у людей на фотке перекошены, как будто их избивают.'];
@@ -30,8 +29,6 @@ function generateComment(number) {
   }
   return arr;
 }
-
-generatePhoto();
 
 export {generatePhoto};
 // почему не срабатывает функция? появляется просто массив из 25 пустых элементов...
