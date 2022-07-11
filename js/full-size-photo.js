@@ -15,7 +15,7 @@ const createComment = function (array) {
 export const showFullPhoto = function(obj) {
   const {url, likes, comments, description} = obj;
   bigPhoto.classList.remove('hidden');
-  bigPhoto.querySelector('.big-picture__img').src = url;
+  bigPhoto.querySelector('.big-picture__img img').src = url;
   bigPhoto.querySelector('.likes-count').textContent = likes;
   bigPhoto.querySelector('.comments-count').textContent = comments.length;
   bigPhoto.querySelector('.social__caption').textContent = description;
