@@ -31,9 +31,3 @@ function generateComment(number) {
 }
 
 export {generatePhoto};
-// почему не срабатывает функция? появляется просто массив из 25 пустых элементов...
-// function generate(number, creator) {
-//   return Array.from({length: number}, creator);
-// }
-
-// console.log(generatePhoto(25));

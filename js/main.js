@@ -1,7 +1,7 @@
+import './full-size-photo.js';
 import './util.js';
 import {generatePhoto} from './data.js';
-import './thumbnails.js';
+import {renderPhotos} from './thumbnails.js';
 
-generatePhoto();
-
-// console.log(generatePhoto(25));
+export const data = generatePhoto(25);
+renderPhotos (data);
