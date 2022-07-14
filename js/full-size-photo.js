@@ -1,5 +1,6 @@
 const bigPhoto = document.querySelector('.big-picture');
 const commentsList = document.querySelector('.social__comments');
+const modalWindow = document.querySelector('body');
 
 const createComment = function (array) {
 
@@ -12,6 +13,20 @@ const createComment = function (array) {
   });
 };
 
+const onKeyDownListener = (evt) => {
+  if (evt.key === 'Escape') {
+    evt.preventDefault();
+    closeFullPhoto (); // eslint-disable-line
+  }
+};
+
+const closeFullPhoto = function () {
+  bigPhoto.classList.add('hidden');
+  modalWindow.classList.remove('modal-open');
+  document.removeEventListener('keydown', onKeyDownListener);
+};
+
+
 export const showFullPhoto = function(obj) {
   const {url, likes, comments, description} = obj;
   bigPhoto.classList.remove('hidden');
@@ -23,14 +38,11 @@ export const showFullPhoto = function(obj) {
   createComment (comments);
   bigPhoto.querySelector('.social__comment-count').classList.add('hidden');
   bigPhoto.querySelector('.comments-loader').classList.add('hidden');
-  document.querySelector('body').classList.add('modal-open');
+  modalWindow.classList.add('modal-open');
 
-  bigPhoto.querySelector('.big-picture__cancel').addEventListener('keydown', (evt) => {
-    if (evt.keyCode === 27) {
-      bigPhoto.classList.add('hidden');
-    }
-  });
+  document.addEventListener('keydown', onKeyDownListener);
+
   bigPhoto.querySelector('.big-picture__cancel').addEventListener('click', () => {
-    bigPhoto.classList.add('hidden');
+    closeFullPhoto ();
   });
 };

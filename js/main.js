@@ -1,3 +1,5 @@
+import './form-validate-comment.js';
+import './form.js';
 import './full-size-photo.js';
 import './util.js';
 import {generatePhoto} from './data.js';
