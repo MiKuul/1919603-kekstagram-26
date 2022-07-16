@@ -21,7 +21,21 @@ pristine.addValidator(
   'Размер комментария - до 140 символов'
 );
 
-const isHashtagValid = (value) => /^#[A-Za-zА-Яа-яЁё0-9]{1,19}$/.test(value);
+const isHashtagValid = (value) => {
+  const arrayOfHashtags = value.split(' ');
+  arrayOfHashtags.forEach ((it, index) => {
+    it.toLowerCase();
+    if (!/^#[a-zа-яё0-9]{1,19}$/.test(it)) {
+      return false;
+    }
+    if (arrayOfHashtags.length > 5) {
+      return false;
+    }
+    if (index !== arrayOfHashtags.lastIndexOf(it)) {
+      return false;
+    }
+  });
+};
 
 pristine.addValidator(
   hashtags,
@@ -29,7 +43,7 @@ pristine.addValidator(
   'Неверный формат ХэшТэга'
 );
 
-form.addEventListener('submit', (evt) => {
-  evt.preventDefault();
+form.addEventListener('submit', () => {
+  // evt.preventDefault();
   pristine.validate();
 });

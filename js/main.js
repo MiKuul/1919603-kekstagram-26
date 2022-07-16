@@ -1,4 +1,4 @@
-import './form-validate-comment.js';
+import './form-validate.js';
 import './form.js';
 import './full-size-photo.js';
 import './util.js';
