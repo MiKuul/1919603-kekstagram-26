@@ -11,7 +11,7 @@ function generatePhoto(number) {
       url: `photos/${i + 1}.jpg`,
       description: `Описание${i + 1}`,
       likes: getRandomPositiveInteger (15, 200),
-      comments: generateComment(getRandomPositiveInteger(1, 3)),
+      comments: generateComment(getRandomPositiveInteger(0, 25)),
     });
   }
   return arr;
