@@ -22,13 +22,13 @@ pristine.addValidator(
 );
 
 const isHashtagValid = (value) => {
-  const arrayOfHashtags = value.split(' ');
+  const arrayOfHashtags = value.split(' ').filter((it) => it.length > 0);
+  if (arrayOfHashtags.length > 5) {
+    return false;
+  }
   arrayOfHashtags.forEach ((it, index) => {
     it.toLowerCase();
     if (!/^#[a-zа-яё0-9]{1,19}$/.test(it)) {
-      return false;
-    }
-    if (arrayOfHashtags.length > 5) {
       return false;
     }
     if (index !== arrayOfHashtags.lastIndexOf(it)) {
@@ -44,6 +44,5 @@ pristine.addValidator(
 );
 
 form.addEventListener('submit', () => {
-  // evt.preventDefault();
   pristine.validate();
 });
