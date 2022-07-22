@@ -9,6 +9,41 @@ const picture = document.querySelector('.img-upload__preview img');
 createSlider();
 sliderElement.classList.add('hidden');
 
+// const fillImage = (value) => {
+//   let name = '';
+//   let format = '';
+//   switch (value) {
+//     case 'none':
+//       picture.style.removeProperty('filter');
+//       sliderElement.classList.add('hidden');
+//       break;
+//     case 'chrome':
+//       name = 'grayscale';
+//       format = '';
+//       break;
+//     case 'sepia':
+//       name = 'sepia';
+//       format = '';
+//       break;
+//     case 'marvin':
+//       name = 'invert';
+//       format = '%';
+//       break;
+//     case 'phobos':
+//       name = 'blur';
+//       format = 'px';
+//       break;
+//     case 'heat':
+//       name = 'brightness';
+//       format = '';
+//       break;
+//   }
+//   sliderElement.noUiSlider.on('update', () => {
+//     picture.style.filter = `${name}(${sliderElementValue.value}${format})`;
+//     sliderElementValue.value = sliderElement.noUiSlider.get();
+//   });
+// };
+
 const getfilterOptions = (value) => {
   sliderElement.classList.remove('hidden');
   sliderElement.noUiSlider.updateOptions(value);
@@ -28,6 +63,7 @@ const createfilter = (value) => {
           break;
         case 'chrome':
           getfilterOptions(chrome);
+          // fillImage(chrome);
           sliderElement.noUiSlider.on('update', () => {
             picture.style.filter = `grayscale(${sliderElementValue.value})`;
             sliderElementValue.value = sliderElement.noUiSlider.get();
@@ -35,6 +71,7 @@ const createfilter = (value) => {
           break;
         case 'sepia':
           getfilterOptions(sepia);
+          // fillImage(sepia);
           sliderElement.noUiSlider.on('update', () => {
             picture.style.filter = `sepia(${sliderElementValue.value})`;
             sliderElementValue.value = sliderElement.noUiSlider.get();
@@ -42,6 +79,7 @@ const createfilter = (value) => {
           break;
         case 'marvin':
           getfilterOptions(marvin);
+          // fillImage(marvin);
           sliderElement.noUiSlider.on('update', () => {
             picture.style.filter = `invert(${sliderElementValue.value}%)`;
             sliderElementValue.value = sliderElement.noUiSlider.get();
@@ -49,6 +87,7 @@ const createfilter = (value) => {
           break;
         case 'phobos':
           getfilterOptions(phobos);
+          // fillImage(phobos);
           sliderElement.noUiSlider.on('update', () => {
             picture.style.filter = `blur(${sliderElementValue.value}px)`;
             sliderElementValue.value = sliderElement.noUiSlider.get();
@@ -56,6 +95,7 @@ const createfilter = (value) => {
           break;
         case 'heat':
           getfilterOptions(heat);
+          // fillImage(heat);
           sliderElement.noUiSlider.on('update', () => {
             picture.style.filter = `brightness(${sliderElementValue.value})`;
             sliderElementValue.value = sliderElement.noUiSlider.get();
