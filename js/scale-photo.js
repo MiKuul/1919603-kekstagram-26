@@ -5,18 +5,23 @@ const uploadImage = document.querySelector('.img-upload__preview');
 
 scaleValue.value = 100;
 
+// const getScaleValue = (value) => {
+//   scaleValue.value = value;
+// };
+
+const setScaleValue = (value) => {
+  let v = Math.max(value, 25);
+  v = Math.min(100, v);
+  scaleValue.value = v;
+  uploadImage.style.transform = `scale(${parseFloat(scaleValue.value/100)})`;
+};
+
 minScaleButton.addEventListener('click', () => {
-  if (scaleValue.value > 25) {
-    scaleValue.value = scaleValue.value - 25;
-    uploadImage.style.transform = `scale(${parseFloat(scaleValue.value/100)})`;
-  }
+  // const current = scaleValue.value;
+  setScaleValue(scaleValue.value - 25);
 });
 
 maxScaleButton.addEventListener('click', () => {
-  if (scaleValue.value < 100) {
-    scaleValue.value = parseFloat(scaleValue.value) + 25;
-    uploadImage.style.transform = `scale(${parseFloat(scaleValue.value/100)})`;
-  }
+  // const current = scaleValue.value;
+  setScaleValue(scaleValue.value + 25);
 });
-
-// КАК ДОБАВИТЬ ЗНАК ПРОЦЕНТА???
