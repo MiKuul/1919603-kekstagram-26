@@ -17,7 +17,7 @@ const onKeyDownListener = (evt) => {
   }
 };
 
-const openUploadWindow = function () {
+const openUploadWindow = () => {
   reset();
   imageUploadWindow.classList.remove('hidden');
   modalWindow.classList.add('modal-open');
@@ -32,7 +32,7 @@ const onChangeListener = modalOpen.addEventListener('change', () => {
   openUploadWindow ();
 });
 
-const closeUploadWindow = function () {
+const closeUploadWindow =  () => {
   imageUploadWindow.classList.add('hidden');
   modalWindow.classList.remove('modal-open');
   modalOpen.value = '';

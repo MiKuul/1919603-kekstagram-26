@@ -1,6 +1,6 @@
 const sliderElement = document.querySelector('.effect-level__slider');
 
-export const createSlider = function () {noUiSlider.create(sliderElement, {
+export const createSlider = () => {noUiSlider.create(sliderElement, {
   range: {
     min: 0,
     max: 100,

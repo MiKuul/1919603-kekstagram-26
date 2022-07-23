@@ -4,7 +4,7 @@ const modalWindow = document.querySelector('body');
 const moreCommentsButton = document.querySelector('.comments-loader');
 const commentTemplate = document.querySelector('#comment').content.querySelector('.social__comment');
 
-const createComment = function (obj) {
+const createComment = (obj) => {
   const {avatar, message, name} = obj;
   const commentElement = commentTemplate.cloneNode(true);
   commentElement.querySelector('.social__picture').src = avatar;
@@ -47,13 +47,13 @@ const renderNextComments = () => {
   bigPhoto.querySelector('.comments-count').textContent = `${commentsCount} из ${  commentsData.length}`;
 };
 
-const closeFullPhoto = function () {
+const closeFullPhoto = () => {
   bigPhoto.classList.add('hidden');
   modalWindow.classList.remove('modal-open');
   document.removeEventListener('keydown', onKeyDownListener);
 };
 
-export const showFullPhoto = function(obj) {
+export const showFullPhoto = (obj) => {
   const {url, likes, comments, description} = obj;
   commentsData = comments;
   bigPhoto.classList.remove('hidden');
