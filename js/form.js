@@ -1,3 +1,5 @@
+import {reset} from './scale-photo.js';
+
 const modalOpen = document.querySelector('#upload-file');
 const modalCloseButton = document.querySelector('#upload-cancel');
 const modalWindow = document.querySelector('body');
@@ -16,6 +18,7 @@ const onKeyDownListener = (evt) => {
 };
 
 const openUploadWindow = function () {
+  reset();
   imageUploadWindow.classList.remove('hidden');
   modalWindow.classList.add('modal-open');
   document.addEventListener('keydown', onKeyDownListener);
