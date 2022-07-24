@@ -1,3 +1,6 @@
+import'./filter-photo-options.js';
+import './filter-photo.js';
+import './scale-photo.js';
 import './form-validate.js';
 import './form.js';
 import './full-size-photo.js';
