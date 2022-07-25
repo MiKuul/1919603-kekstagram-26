@@ -27,7 +27,7 @@ const isHashtagValid = (value) => {
   if (arrayOfHashtags.length > 5) {
     return false;
   }
-  arrayOfHashtags.forEach ((it, index) => {
+  return arrayOfHashtags.every((it, index) => {
     it.toLowerCase();
     if (!/^#[a-zа-яё0-9]{1,19}$/.test(it)) {
       return false;
@@ -35,6 +35,7 @@ const isHashtagValid = (value) => {
     if (index !== arrayOfHashtags.lastIndexOf(it)) {
       return false;
     }
+    return true;
   });
 };
 

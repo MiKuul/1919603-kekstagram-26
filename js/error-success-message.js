@@ -1,9 +1,9 @@
+import {imageUploadWindow} from'./form.js';
+
 const mainOfHtml = document.querySelector('main');
 const bodyOfHtml = document.querySelector('body');
 const successMessageTemplate = document.querySelector('#success').content.querySelector('.success');
 const errorMessageTemplate = document.querySelector('#error').content.querySelector('.error');
-const successButton = document.querySelector('.success-button');
-const errorButton = document.querySelector('.error__button');
 
 export const showErrorMessage = () => {
   const errorElement = document.createElement('div');
@@ -12,20 +12,6 @@ export const showErrorMessage = () => {
   errorElement.style.padding = '5px 0px';
   mainOfHtml.prepend(errorElement);
   errorElement.innerHTML = '<h1>Не удалось загрузить фотографии!</h1>';
-};
-
-export const onSendDataError = () => {
-  const errorMessage = errorMessageTemplate.cloneNode(true);
-  const fragment = document.createDocumentFragment();
-  fragment.appendChild = errorMessage;
-  bodyOfHtml.appendChild(fragment);
-};
-
-export const onSendDataSuccess = () => {
-  const successMessage = successMessageTemplate.cloneNode(true);
-  const fragment = document.createDocumentFragment();
-  fragment.appendChild = successMessage;
-  bodyOfHtml.append(fragment);
 };
 
 
@@ -37,15 +23,46 @@ const onKeyDownListener = (evt) => {
 };
 
 const closeSystemMessage = () => {
-  document.querySelector('.success').remove();
-  document.querySelector('.error').remove();
+  if (document.querySelector('.success')) {
+    document.querySelector('.success').remove();
+  } else {
+    document.querySelector('.error').remove();
+    imageUploadWindow.classList.remove('hidden');
+  }
   document.removeEventListener('keydown', onKeyDownListener);
 };
 
-// successButton.addEventListener('click', () => {
-//   closeSystemMessage();
-// });
+export const showSendErrorMessage = () => {
+  const errorMessage = errorMessageTemplate.cloneNode(true);
+  bodyOfHtml.appendChild(errorMessage);
+  if (document.querySelector('.error__button')) {
+    document.querySelector('.error__button').addEventListener('click', () => {
+      closeSystemMessage();
+    });
+  }
+  if (document.querySelector('.error')) {
+    document.querySelector('.error').addEventListener('click', (event) => {
+      if (event.target === document.querySelector('.error')) {
+        closeSystemMessage();
+      }
+    });
+  }
+};
 
-// errorButton.addEventListener('click', () => {
-//   closeSystemMessage();
-// });
+export const showSendSuccessMessage = () => {
+  const successMessage = successMessageTemplate.cloneNode(true);
+  bodyOfHtml.appendChild(successMessage);
+  if (document.querySelector('.success__button')) {
+    document.querySelector('.success__button').addEventListener('click', () => {
+      closeSystemMessage();
+    });
+  }
+  if (document.querySelector('.success')) {
+    document.querySelector('.success').addEventListener('click', (event) => {
+      if (event.target === document.querySelector('.success')) {
+        closeSystemMessage();
+      }
+    });
+  }
+};
+
