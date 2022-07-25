@@ -1,6 +1,7 @@
 const form = document.querySelector('.img-upload__form');
 const comment = form.querySelector('#description');
 const hashtags = form.querySelector('#hashtags');
+const submitButton = document.querySelector('.img-upload__submit');
 
 const pristine = new Pristine(form, {
   classTo: 'img-upload__text',
@@ -43,6 +44,24 @@ pristine.addValidator(
   'Неверный формат ХэшТэга'
 );
 
-form.addEventListener('submit', () => {
-  pristine.validate();
-});
+const blockSubmitButton = () => {
+  submitButton.disabled = true;
+  submitButton.textContent = 'Отправляю...';
+};
+
+const unblockSubmitButton = () => {
+  submitButton.disabled = false;
+  submitButton.textContent = 'Опубликовать';
+};
+
+export const setOnFormSubmit = (cb) => {
+  form.addEventListener('submit', async (evt) => {
+    evt.preventDefault();
+    const isValid = pristine.validate();
+    if (isValid) {
+      blockSubmitButton();
+      await cb(new FormData(form));
+      unblockSubmitButton();
+    }
+  });
+};
