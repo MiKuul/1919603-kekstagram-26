@@ -15,12 +15,12 @@ const createPictureElement = (obj) => {
   return pictureElement;
 };
 
-export const renderPhotos = (array) => {
-  photosList.querySelectorAll('.picture').forEach((element) => element.remove());
-  const pictureListFragment = document.createDocumentFragment();
-  array.forEach((photo) => {
-    const element = createPictureElement (photo);
-    pictureListFragment.appendChild(element);
-  });
-  photosList.appendChild(pictureListFragment);
-};
+// export const renderPhotos = (array) => {
+//   photosList.querySelectorAll('.picture').forEach((element) => element.remove());
+//   const pictureListFragment = document.createDocumentFragment();
+//   array.forEach((photo) => {
+//     const element = createPictureElement (photo);
+//     pictureListFragment.appendChild(element);
+//   });
+//   photosList.appendChild(pictureListFragment);
+// };
