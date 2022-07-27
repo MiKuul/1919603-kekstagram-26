@@ -1,7 +1,7 @@
 import {getRandomPositiveInteger, getRandomArrayElement} from './util.js';
 
-const DATA_NAME = [ 'Артем', 'Даня', 'Лиза', 'Герман', 'Моника', 'Дина'];
-const DATA_MESSAGE = ['Всё отлично!', 'Как можно было поймать такой неудачный момент?!', ' В целом всё неплохо. Но не всё.', 'Лица у людей на фотке перекошены, как будто их избивают.'];
+const DATA_NAMES = [ 'Артем', 'Даня', 'Лиза', 'Герман', 'Моника', 'Дина'];
+const DATA_MESSAGES = ['Всё отлично!', 'Как можно было поймать такой неудачный момент?!', ' В целом всё неплохо. Но не всё.', 'Лица у людей на фотке перекошены, как будто их избивают.'];
 
 
 const generateComment = (number) => {
@@ -10,8 +10,8 @@ const generateComment = (number) => {
     arr.push({
       id: i + 1,
       avatar: `img/avatar-${getRandomPositiveInteger(1, 6)}.svg`,
-      message: getRandomArrayElement(DATA_MESSAGE),
-      name: getRandomArrayElement(DATA_NAME),
+      message: getRandomArrayElement(DATA_MESSAGES),
+      name: getRandomArrayElement(DATA_NAMES),
     });
   }
   return arr;

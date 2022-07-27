@@ -44,7 +44,7 @@ const renderNextComments = () => {
   if (start > commentsData.length) {
     commentsCount = commentsData.length;
   }
-  bigPhoto.querySelector('.comments-count').textContent = `${commentsCount} из ${  commentsData.length}`;
+  bigPhoto.querySelector('.comments-count').textContent = `${commentsCount} из ${commentsData.length}`;
 };
 
 const closeFullPhoto = () => {
