@@ -11,9 +11,11 @@ import {getData} from './download-data.js';
 import {showErrorMessage, showSendSuccessMessage, showSendErrorMessage} from './error-success-message.js';
 import {setOnFormSubmit} from './form-validate.js';
 import {sendData} from './send-data.js';
+import {turnFilterOn, filterPhotos} from './upload-photo-filter.js';
 
 const onLoadSuccess = (data) => {
-  renderPhotos(data);
+  turnFilterOn(data);
+  renderPhotos(filterPhotos());
 };
 
 const onLoadError = (error) => {
