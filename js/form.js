@@ -1,6 +1,6 @@
 import {reset} from './scale-photo.js';
 
-const modalOpen = document.querySelector('#upload-file');
+const modal = document.querySelector('#upload-file');
 const modalCloseButton = document.querySelector('#upload-cancel');
 const modalWindow = document.querySelector('body');
 export const imageUploadWindow = document.querySelector('.img-upload__overlay');
@@ -21,7 +21,7 @@ const onKeyDownListener = (evt) => {
     } else {
       evt.preventDefault();
       closeUploadWindow (); // eslint-disable-line
-      modalOpen.value = '';
+      modal.value = '';
     }
   }
 };
@@ -37,8 +37,8 @@ modalCloseButton.addEventListener('click', () => {
   closeUploadWindow (); // eslint-disable-line
 });
 
-const onChangeListener = modalOpen.addEventListener('change', () => {
-  const file = modalOpen.files[0];
+const onChangeListener = modal.addEventListener('change', () => {
+  const file = modal.files[0];
   if (file && isValidType(file)) {
     photoPreview.src = URL.createObjectURL(file);
     effectsPreviews.forEach((preview) => {
@@ -51,7 +51,7 @@ const onChangeListener = modalOpen.addEventListener('change', () => {
 export const closeUploadWindow =  () => {
   imageUploadWindow.classList.add('hidden');
   modalWindow.classList.remove('modal-open');
-  modalOpen.value = '';
+  modal.value = '';
   document.removeEventListener('keydown', onKeyDownListener);
   document.removeEventListener('change', onChangeListener);
 };

@@ -3,7 +3,7 @@ import {createSlider, chrome, sepia, marvin, phobos, heat} from './filter-photo-
 const sliderElement = document.querySelector('.effect-level__slider');
 const sliderElementValue = document.querySelector('.effect-level__value');
 const effectsList = document.querySelector('.effects');
-const picture = document.querySelector('.img-upload__preview img');
+const photo = document.querySelector('.img-upload__preview img');
 
 createSlider();
 sliderElement.classList.add('hidden');
@@ -36,10 +36,10 @@ const getCurrentFilterValue = () => {
 
 const setNewOptions = () => {
   const effectValue = getCurrentFilterValue();
-  picture.className = `effects__preview--${effectValue}`;
+  photo.className = `effects__preview--${effectValue}`;
   if (effectValue === 'none') {
     sliderElement.classList.add('hidden');
-    picture.style.removeProperty('filter');
+    photo.style.removeProperty('filter');
   } else {
     sliderElement.classList.remove('hidden');
     sliderElement.noUiSlider.updateOptions(getFilterOptions(effectValue));
@@ -47,7 +47,7 @@ const setNewOptions = () => {
 };
 
 sliderElement.noUiSlider.on('update', () => {
-  picture.style.filter = getFilter(getCurrentFilterValue(), sliderElement.noUiSlider.get());
+  photo.style.filter = getFilter(getCurrentFilterValue(), sliderElement.noUiSlider.get());
   sliderElementValue.value = sliderElement.noUiSlider.get();
 });
 
