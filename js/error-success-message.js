@@ -34,6 +34,7 @@ const closeSystemMessage = () => {
 
 export const showSendErrorMessage = () => {
   const errorMessage = errorMessageTemplate.cloneNode(true);
+  document.addEventListener('keydown', onKeyDownListener);
   bodyOfHtml.appendChild(errorMessage);
   if (document.querySelector('.error__button')) {
     document.querySelector('.error__button').addEventListener('click', () => {
@@ -51,6 +52,7 @@ export const showSendErrorMessage = () => {
 
 export const showSendSuccessMessage = () => {
   const successMessage = successMessageTemplate.cloneNode(true);
+  document.addEventListener('keydown', onKeyDownListener);
   bodyOfHtml.appendChild(successMessage);
   if (document.querySelector('.success__button')) {
     document.querySelector('.success__button').addEventListener('click', () => {
