@@ -1,17 +1,17 @@
-import {reset} from './scale-photo.js';
+import {resetValue} from './scale-photo.js';
 
 const modal = document.querySelector('#upload-file');
 const modalCloseButton = document.querySelector('#upload-cancel');
 const modalWindow = document.querySelector('body');
 export const imageUploadWindow = document.querySelector('.img-upload__overlay');
 
-const FILE_TYPES = ['jpg', 'jpeg', 'png'];
+const TYPES = ['jpg', 'jpeg', 'png'];
 const photoPreview = document.querySelector('.img-upload__preview img');
 const effectsPreviews = document.querySelectorAll('.effects__preview');
 
 const isValidType = (file) => {
   const fileName = file.name.toLowerCase();
-  return FILE_TYPES.some((it) => fileName.endsWith(it));
+  return TYPES.some((it) => fileName.endsWith(it));
 };
 
 const onKeyDownListener = (evt) => {
@@ -27,7 +27,7 @@ const onKeyDownListener = (evt) => {
 };
 
 const openUploadWindow = () => {
-  reset();
+  resetValue();
   imageUploadWindow.classList.remove('hidden');
   modalWindow.classList.add('modal-open');
   document.addEventListener('keydown', onKeyDownListener);
@@ -37,7 +37,7 @@ modalCloseButton.addEventListener('click', () => {
   closeUploadWindow (); // eslint-disable-line
 });
 
-const onChangeListener = modal.addEventListener('change', () => {
+const changeImage = () => {
   const file = modal.files[0];
   if (file && isValidType(file)) {
     photoPreview.src = URL.createObjectURL(file);
@@ -45,8 +45,14 @@ const onChangeListener = modal.addEventListener('change', () => {
       preview.style.backgroundImage = `url('${photoPreview.src}')`;
     });
   }
+};
+
+const onChangeListener = () => {
+  changeImage();
   openUploadWindow ();
-});
+};
+
+modal.addEventListener('change', onChangeListener);
 
 export const closeUploadWindow =  () => {
   imageUploadWindow.classList.add('hidden');

@@ -4,7 +4,6 @@ import './scale-photo.js';
 import './form-validate.js';
 import './full-size-photo.js';
 import './util.js';
-import './data.js';
 import {closeUploadWindow, imageUploadWindow} from'./form.js';
 import {renderPhotos} from './thumbnails.js';
 import {getData} from './download-data.js';

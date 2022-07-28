@@ -12,11 +12,11 @@ const setScaleValue = (value) => {
   uploadImage.style.transform = `scale(${parseFloat(v/100)})`;
 };
 
-export const reset = () => {
+export const resetValue = () => {
   setScaleValue(100);
 };
 
-reset();
+resetValue();
 
 minScaleButton.addEventListener('click', () => {
   const current = getScaleValue();

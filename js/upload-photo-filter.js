@@ -1,8 +1,9 @@
 import {renderPhotos} from './thumbnails.js';
 import {debounce} from './util.js';
 
-const filtersElement = document.querySelector('.img-filters');
+const PHOTOS_COUNT = 10;
 
+const filtersElement = document.querySelector('.img-filters');
 const Filter = {
   DEFAULT: 'filter-default',
   RANDOM: 'filter-random',
@@ -23,7 +24,6 @@ const randomSort = () => Math.random() - 0.5;
 const discussedSort = (photoA, photoB) =>
   photoB.comments.length - photoA.comments.length;
 
-const PHOTOS_COUNT = 10;
 
 export const filterPhotos = () => {
   switch (currentFilter) {

@@ -12,9 +12,7 @@ const pristine = new Pristine(form, {
   errorTextClass: 'img-form__error'
 });
 
-function validateComment (value) {
-  return value.length <= 140;
-}
+const validateComment = (value) => value.length <= 140;
 
 pristine.addValidator(
   comment,
@@ -32,10 +30,7 @@ const isHashtagValid = (value) => {
     if (!/^#[a-zа-яё0-9]{1,19}$/.test(it)) {
       return false;
     }
-    if (index !== arrayOfHashtags.lastIndexOf(it)) {
-      return false;
-    }
-    return true;
+    return index === arrayOfHashtags.lastIndexOf(it);
   });
 };
 
